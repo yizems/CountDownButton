@@ -37,7 +37,9 @@
  - start() 开始计时
  - restart() 计时;
  - 添加进度监听 CountDownListener
+ 
 ## 3 属性说明
+
 - has_prepare是否显示准备阶段,false点击直接进入计时
 - max_count 可以理解为 从多少开始倒计时,单位秒
 - space_time:多少秒更新一下UI
