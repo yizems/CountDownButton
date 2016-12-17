@@ -39,3 +39,21 @@
 - space_time:多少秒更新一下UI
 - timer_text:00代表着要替换的数字,结合效果图理解
 - 其他的看名字就知道什么意思了
+
+## 4 依赖
+
+```gradle
+
+//工程gradle
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+//module
+ dependencies {
+	        compile 'com.github.yizeliang:CountDownButton:1.0'
+	}
+
+```
