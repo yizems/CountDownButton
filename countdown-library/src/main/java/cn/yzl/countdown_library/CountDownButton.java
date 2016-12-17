@@ -24,7 +24,7 @@ public class CountDownButton extends Button {
 
 
     /**
-     * 是否有准备阶段,默认 有
+     * 是否有准备阶段,默认 false
      */
     private boolean hasPrepared;
 
@@ -44,7 +44,7 @@ public class CountDownButton extends Button {
     private static final int STATE_PREPARE = STATE_TIME << 1;
 
     /**
-     * 准备开始
+     * 结束状态
      */
     private static final int STATE_END = STATE_PREPARE << 1;
 
@@ -153,7 +153,6 @@ public class CountDownButton extends Button {
         }
         typedArray.recycle();
         init();
-
     }
 
     /**
@@ -165,6 +164,10 @@ public class CountDownButton extends Button {
     }
 
 
+    /**
+     * 拦截事件
+     * @return
+     */
     @Override
     public boolean performClick() {
         if (state == STATE_NORMAL || state == STATE_END) {
@@ -211,10 +214,16 @@ public class CountDownButton extends Button {
         }
     }
 
+    /**
+     * 开始计时
+     */
     public void start() {
         changeState(STATE_TIME);
     }
 
+    /**
+     * 重新开始计时
+     */
     public void restart() {
         timer = new MyCountDownTimer(maxCount * 1000, spaceTime * 1000);
         timer.start();

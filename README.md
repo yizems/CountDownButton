@@ -33,6 +33,10 @@
         app:timer_text="重新获取(00)s"
         app:timer_text_color="#3F51B5" />
 ```
+ - 如果有准备状态,准备结束后通过下面的方法可以开始计时
+ - start() 开始计时
+ - restart() 计时;
+
 ## 3 属性说明
 - has_prepare是否显示准备阶段,false点击直接进入计时
 - max_count 可以理解为 从多少开始倒计时,单位秒
@@ -53,7 +57,7 @@ allprojects {
 	}
 //module
  dependencies {
-	        compile 'com.github.yizeliang:CountDownButton:1.0'
+	        compile 'com.github.yizeliang:CountDownButton:1.1'
 	}
 
 ```
