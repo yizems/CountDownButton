@@ -1,5 +1,30 @@
 package cn.yzl.countdown_library;
 
+
+/*
+                   _ooOoo_
+                  o8888888o
+                  88" . "88
+                  (| -_- |)
+                  O\  =  /O
+               ____/`---'\____
+             .'  \\|     |//  `.
+            /  \\|||  :  |||//  \
+           /  _||||| -:- |||||-  \
+           |   | \\\  -  /// |   |
+           | \_|  ''\---/''  |   |
+           \  .-\__  `-`  ___/-. /
+         ___`. .'  /--.--\  `. . __
+      ."" '<  `.___\_<|>_/___.'  >'"".
+     | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+     \  \ `-.   \_ __\ /__ _/   .-` /  /
+======`-.____`-.___\_____/___.-`____.-'======
+                   `=---='
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         佛祖镇楼      永无BUG
+*/
+
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -10,6 +35,7 @@ import android.support.annotation.IntRange;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.Button;
+
 
 /**
  * 逻辑:
@@ -22,6 +48,8 @@ import android.widget.Button;
  */
 public class CountDownButton extends Button {
 
+
+    private CountDownListener listener;
 
     /**
      * 是否有准备阶段,默认 false
@@ -166,6 +194,7 @@ public class CountDownButton extends Button {
 
     /**
      * 拦截事件
+     *
      * @return
      */
     @Override
@@ -203,6 +232,9 @@ public class CountDownButton extends Button {
             case STATE_TIME:
                 timer = new MyCountDownTimer(maxCount * 1000, spaceTime * 1000);
                 timer.start();
+                if (listener != null) {
+                    listener.start();
+                }
                 setTextColor(timerTextColor);
                 setBackgroundResource(timerBg);
                 break;
@@ -245,6 +277,9 @@ public class CountDownButton extends Button {
         @Override
         public void onFinish() {
             changeState(STATE_END);
+            if (listener != null) {
+                listener.finish();
+            }
         }
 
         /**
@@ -253,6 +288,9 @@ public class CountDownButton extends Button {
         @Override
         public void onTick(long millisUntilFinished) {
             setText(timerText.replace("00", String.valueOf(millisUntilFinished / 1000)));
+            if (listener != null) {
+                listener.countDown(new Long(millisUntilFinished / 1000).intValue());
+            }
         }
 
     }
@@ -333,6 +371,12 @@ public class CountDownButton extends Button {
     public void setHasPrepared(boolean hasPrepared) {
         this.hasPrepared = hasPrepared;
     }
+
+
+    public void setListener(CountDownListener listener) {
+        this.listener = listener;
+    }
+
 
 }
 
