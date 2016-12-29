@@ -78,7 +78,7 @@ public class CountDownButton extends Button {
 
 
     @IntDef({STATE_NORMAL, STATE_PREPARE, STATE_TIME, STATE_END})
-    private @interface State {
+    public  @interface State {
     }
 
     /**
