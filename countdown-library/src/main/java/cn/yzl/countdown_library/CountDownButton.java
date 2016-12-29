@@ -59,22 +59,22 @@ public class CountDownButton extends Button {
     /**
      * 正常
      */
-    private static final int STATE_NORMAL = 1;
+    public static final int STATE_NORMAL = 1;
 
     /**
      * 计时中
      */
-    private static final int STATE_TIME = STATE_NORMAL << 1;
+    public static final int STATE_TIME = STATE_NORMAL << 1;
 
     /**
      * 准备开始
      */
-    private static final int STATE_PREPARE = STATE_TIME << 1;
+    public static final int STATE_PREPARE = STATE_TIME << 1;
 
     /**
      * 结束状态
      */
-    private static final int STATE_END = STATE_PREPARE << 1;
+    public static final int STATE_END = STATE_PREPARE << 1;
 
 
     @IntDef({STATE_NORMAL, STATE_PREPARE, STATE_TIME, STATE_END})
