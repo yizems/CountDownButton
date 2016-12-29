@@ -78,7 +78,7 @@ public class CountDownButton extends Button {
 
 
     @IntDef({STATE_NORMAL, STATE_PREPARE, STATE_TIME, STATE_END})
-    public  @interface State {
+    public @interface State {
     }
 
     /**
@@ -90,7 +90,6 @@ public class CountDownButton extends Button {
 
     private int maxCount;
 
-    private int spaceTime;
 
     /**
      * 正常的 文字
@@ -142,39 +141,39 @@ public class CountDownButton extends Button {
         tempString = typedArray.getString(R.styleable.CountDownButton_prepare_text);
         if (!TextUtils.isEmpty(tempString)) {
             prepareText = tempString;
+        } else {
+            prepareText = normalText;
         }
         tempString = typedArray.getString(R.styleable.CountDownButton_timer_text);
         if (!TextUtils.isEmpty(tempString)) {
             timerText = tempString;
+        } else {
+            timerText = "00";
         }
         tempString = typedArray.getString(R.styleable.CountDownButton_end_text);
         if (!TextUtils.isEmpty(tempString)) {
             endText = tempString;
+        } else {
+            endText = "重新获取";
         }
 
         normalTextColor = typedArray.getColor(R.styleable.CountDownButton_normal_text_color, Color.parseColor("#000000"));
 
-        prepareTextColor = typedArray.getColor(R.styleable.CountDownButton_prepare_text_color, Color.parseColor("#000000"));
+        prepareTextColor = typedArray.getColor(R.styleable.CountDownButton_prepare_text_color, normalTextColor);
 
-        timerTextColor = typedArray.getColor(R.styleable.CountDownButton_timer_text_color, Color.parseColor("#000000"));
+        timerTextColor = typedArray.getColor(R.styleable.CountDownButton_timer_text_color, normalTextColor);
 
-        endTextColor = typedArray.getColor(R.styleable.CountDownButton_end_text_color, Color.parseColor("#000000"));
+        endTextColor = typedArray.getColor(R.styleable.CountDownButton_end_text_color, normalTextColor);
 
         normalBg = typedArray.getResourceId(R.styleable.CountDownButton_normal_bg, R.drawable.bg_count_button_default);
 
-        prepareBg = typedArray.getResourceId(R.styleable.CountDownButton_prepare_bg, R.drawable.bg_count_button_default);
-        timerBg = typedArray.getResourceId(R.styleable.CountDownButton_timer_bg, R.drawable.bg_count_button_default);
-        endBg = typedArray.getResourceId(R.styleable.CountDownButton_end_bg, R.drawable.bg_count_button_default);
+        prepareBg = typedArray.getResourceId(R.styleable.CountDownButton_prepare_bg, normalBg);
+        timerBg = typedArray.getResourceId(R.styleable.CountDownButton_timer_bg, normalBg);
+        endBg = typedArray.getResourceId(R.styleable.CountDownButton_end_bg, normalBg);
 
         hasPrepared = typedArray.getBoolean(R.styleable.CountDownButton_has_prepare, false);
 
         maxCount = typedArray.getInt(R.styleable.CountDownButton_max_count, 60);
-
-        spaceTime = typedArray.getInt(R.styleable.CountDownButton_space_time, 1);
-
-        if (spaceTime == 0) {
-            throw new Exception("时间间距不能为 0");
-        }
 
         if (!timerText.contains("00")) {
             throw new Exception("计时模板中必须含有 00");
@@ -230,7 +229,7 @@ public class CountDownButton extends Button {
                 }
                 break;
             case STATE_TIME:
-                timer = new MyCountDownTimer(maxCount * 1000, spaceTime * 1000);
+                timer = new MyCountDownTimer(maxCount * 1000, 1 * 1000);
                 timer.start();
                 if (listener != null) {
                     listener.start();
@@ -257,7 +256,7 @@ public class CountDownButton extends Button {
      * 重新开始计时
      */
     public void restart() {
-        timer = new MyCountDownTimer(maxCount * 1000, spaceTime * 1000);
+        timer = new MyCountDownTimer(maxCount * 1000, 1 * 1000);
         timer.start();
     }
 
@@ -301,14 +300,6 @@ public class CountDownButton extends Button {
 
     public void setMaxCount(@IntRange(from = 1, to = Integer.MAX_VALUE) int maxCount) {
         this.maxCount = maxCount;
-    }
-
-    public int getSpaceTime() {
-        return spaceTime;
-    }
-
-    public void setSpaceTime(@IntRange(from = 1, to = Integer.MAX_VALUE) int spaceTime) {
-        this.spaceTime = spaceTime;
     }
 
     public void setNormalText(String normalText) {

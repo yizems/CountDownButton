@@ -3,7 +3,6 @@
 
     <attr name="max_count" format="integer" />
 
-    <attr name="space_time" format="integer"/>
 
     <attr name="has_prepare" format="boolean" />
 
@@ -23,7 +22,6 @@
     <attr name="end_text_color" format="color" />
 
     <declare-styleable name="CountDownButton">
-        <attr name="space_time"/>
 
         <attr name="max_count" />
 
