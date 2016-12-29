@@ -23,7 +23,6 @@
         app:prepare_bg="@drawable/bg_count_button_default"
         app:prepare_text="正在发送"
         app:prepare_text_color="#88ff11"
-        app:space_time="1"
         app:max_count="10"
         app:timer_bg="@drawable/bg_count_button_aa"
         app:timer_text="重新获取(00)s"

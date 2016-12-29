@@ -27,7 +27,6 @@
         app:prepare_bg="@drawable/bg_count_button_default"
         app:prepare_text="正在发送"
         app:prepare_text_color="#88ff11"
-        app:space_time="1"
         app:max_count="10"
         app:timer_bg="@drawable/bg_count_button_aa"
         app:timer_text="重新获取(00)s"
@@ -42,7 +41,6 @@
 
 - has_prepare是否显示准备阶段,false点击直接进入计时
 - max_count 可以理解为 从多少开始倒计时,单位秒
-- space_time:多少秒更新一下UI
 - timer_text:00代表着要替换的数字,结合效果图理解
 - 其他的看名字就知道什么意思了
 
@@ -63,3 +61,15 @@ allprojects {
 	}
 
 ```
+## 5 更新日志
+
+### 1.8
+
+- 修复 准备状态依旧执行点击监听的方法
+- 并且删除以前的release
+
+### 1.7
+
+- 取消timespace属性
+
+

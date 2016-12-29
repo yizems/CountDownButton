@@ -190,7 +190,6 @@ public class CountDownButton extends Button {
         changeState(STATE_NORMAL);
     }
 
-
     /**
      * 拦截事件
      *
@@ -199,9 +198,10 @@ public class CountDownButton extends Button {
     @Override
     public boolean performClick() {
         if (state == STATE_NORMAL || state == STATE_END) {
-            changeState(STATE_PREPARE);
             if (!hasPrepared) {
                 start();
+            } else {
+                changeState(STATE_PREPARE);
             }
             return super.performClick();
         } else {
@@ -217,11 +217,13 @@ public class CountDownButton extends Button {
     public void changeState(@State int state) {
         switch (state) {
             case STATE_NORMAL:
+                this.state = STATE_NORMAL;
                 setText(normalText);
                 setTextColor(normalTextColor);
                 setBackgroundResource(normalBg);
                 break;
             case STATE_PREPARE:
+                this.state = STATE_PREPARE;
                 if (hasPrepared) {
                     setText(prepareText);
                     setTextColor(prepareTextColor);
@@ -229,6 +231,7 @@ public class CountDownButton extends Button {
                 }
                 break;
             case STATE_TIME:
+                this.state = STATE_TIME;
                 timer = new MyCountDownTimer(maxCount * 1000, 1 * 1000);
                 timer.start();
                 if (listener != null) {
@@ -238,6 +241,7 @@ public class CountDownButton extends Button {
                 setBackgroundResource(timerBg);
                 break;
             case STATE_END:
+                this.state = STATE_END;
                 setText(endText);
                 setTextColor(endTextColor);
                 setBackgroundResource(endBg);
