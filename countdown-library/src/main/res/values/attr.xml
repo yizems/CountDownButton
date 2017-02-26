@@ -4,7 +4,7 @@
     <attr name="max_count" format="integer" />
 
 
-    <attr name="has_prepare" format="boolean" />
+    <attr name="show_prepare" format="boolean" />
 
     <attr name="normal_text" format="string" />
     <attr name="prepare_text" format="string" />
@@ -25,7 +25,7 @@
 
         <attr name="max_count" />
 
-        <attr name="has_prepare" />
+        <attr name="show_prepare" />
 
 
         <attr name="normal_text" />

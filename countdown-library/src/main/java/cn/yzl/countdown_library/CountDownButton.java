@@ -54,7 +54,7 @@ public class CountDownButton extends Button {
     /**
      * 是否有准备阶段,默认 false
      */
-    private boolean hasPrepared;
+    private boolean showPrepared;
 
     /**
      * 正常
@@ -171,7 +171,7 @@ public class CountDownButton extends Button {
         timerBg = typedArray.getResourceId(R.styleable.CountDownButton_timer_bg, normalBg);
         endBg = typedArray.getResourceId(R.styleable.CountDownButton_end_bg, normalBg);
 
-        hasPrepared = typedArray.getBoolean(R.styleable.CountDownButton_has_prepare, false);
+        showPrepared = typedArray.getBoolean(R.styleable.CountDownButton_show_prepare, false);
 
         maxCount = typedArray.getInt(R.styleable.CountDownButton_max_count, 60);
 
@@ -198,11 +198,7 @@ public class CountDownButton extends Button {
     @Override
     public boolean performClick() {
         if (state == STATE_NORMAL || state == STATE_END) {
-            if (!hasPrepared) {
-                start();
-            } else {
-                changeState(STATE_PREPARE);
-            }
+            changeState(STATE_PREPARE);
             return super.performClick();
         } else {
             return false;
@@ -224,7 +220,7 @@ public class CountDownButton extends Button {
                 break;
             case STATE_PREPARE:
                 this.state = STATE_PREPARE;
-                if (hasPrepared) {
+                if (showPrepared) {
                     setText(prepareText);
                     setTextColor(prepareTextColor);
                     setBackgroundResource(prepareBg);
@@ -361,10 +357,10 @@ public class CountDownButton extends Button {
     /**
      * 是否有准备阶段
      *
-     * @param hasPrepared
+     * @param showPrepared
      */
-    public void setHasPrepared(boolean hasPrepared) {
-        this.hasPrepared = hasPrepared;
+    public void setShowPrepared(boolean showPrepared) {
+        this.showPrepared = showPrepared;
     }
 
 

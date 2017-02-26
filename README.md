@@ -20,7 +20,7 @@
         android:layout_height="50dp"
         app:end_text="重新发送"
         app:end_text_color="#228899"
-        app:has_prepare="false"
+        app:show_prepare="false"
         app:normal_bg="@drawable/bg_count_button_default"
         app:normal_text="发送"
         app:normal_text_color="#000000"
@@ -39,7 +39,7 @@
  
 ## 3 属性说明
 
-- has_prepare是否显示准备阶段,false点击直接进入计时
+- show_prepare是否显示准备阶段字体样式,false不显示
 - max_count 可以理解为 从多少开始倒计时,单位秒
 - timer_text:00代表着要替换的数字,结合效果图理解
 - 其他的看名字就知道什么意思了
@@ -62,6 +62,10 @@ allprojects {
 
 ```
 ## 5 更新日志
+
+### 1.9
+
+- showPrepared:改变hasPrepared阶段逻辑,不应该直接计时,应该是是否显示此阶段的文字样式,
 
 ### 1.8
 
