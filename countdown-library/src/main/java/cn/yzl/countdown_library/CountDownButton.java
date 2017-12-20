@@ -1,6 +1,5 @@
 package cn.yzl.countdown_library;
 
-
 /*
                    _ooOoo_
                   o8888888o
@@ -32,9 +31,12 @@ import android.os.CountDownTimer;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IntDef;
 import android.support.annotation.IntRange;
+import android.support.v7.widget.AppCompatButton;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.widget.Button;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 
 /**
@@ -46,7 +48,7 @@ import android.widget.Button;
  * <p>
  * Created by  伊 on 2016/12/17.
  */
-public class CountDownButton extends Button {
+public class CountDownButton extends AppCompatButton {
 
 
     private CountDownListener listener;
@@ -76,7 +78,7 @@ public class CountDownButton extends Button {
      */
     public static final int STATE_END = STATE_PREPARE << 1;
 
-
+    @Retention(RetentionPolicy.SOURCE)
     @IntDef({STATE_NORMAL, STATE_PREPARE, STATE_TIME, STATE_END})
     public @interface State {
     }
@@ -198,7 +200,7 @@ public class CountDownButton extends Button {
     @Override
     public boolean performClick() {
         if (state == STATE_NORMAL || state == STATE_END) {
-            changeState(STATE_PREPARE);
+//            changeState(STATE_PREPARE);
             return super.performClick();
         } else {
             return false;
@@ -213,6 +215,9 @@ public class CountDownButton extends Button {
     public void changeState(@State int state) {
         switch (state) {
             case STATE_NORMAL:
+                if(timer!=null){
+                    timer.cancel();
+                }
                 this.state = STATE_NORMAL;
                 setText(normalText);
                 setTextColor(normalTextColor);

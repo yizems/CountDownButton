@@ -36,6 +36,34 @@
  - start() 开始计时
  - restart() 计时;
  - 添加进度监听 CountDownListener
+
+ 提供一个主题
+
+ ```xml
+ <!--倒计时按钮-->
+     <style name="CountDownButton">
+         <item name="android:textScaleX">1.0</item>
+         <item name="android:padding">0dp</item>
+         <item name="android:textSize">14dp</item>
+         <item name="android:minHeight">0dp</item>
+         <item name="android:minWidth">0dp</item>
+         <item name="android:layout_height">35dp</item>
+         <item name="android:layout_width">100dp</item>
+         <item name="end_text">重新获取</item>
+         <item name="end_text_color">#C22639</item>
+         <item name="max_count">60</item>
+         <item name="normal_bg">@drawable/bg_countdownbutton_normal</item>
+         <item name="normal_text">获取验证码</item>
+         <item name="normal_text_color">#C22639</item>
+         <item name="prepare_bg">@drawable/bg_countdownbutton_normal</item>
+         <item name="prepare_text">正在发送</item>
+         <item name="prepare_text_color">#C22639</item>
+         <item name="show_prepare">false</item>
+         <item name="timer_bg">@drawable/bg_countdownbutton_gray</item>
+         <item name="timer_text">重新获取(00)s</item>
+         <item name="timer_text_color">@color/white</item>
+     </style>
+ ```
  
 ## 3 属性说明
 
@@ -57,11 +85,13 @@ allprojects {
 	}
 //module
  dependencies {
-	        compile 'com.github.yizeliang:CountDownButton:1.4'
+	        compile 'com.github.yizeliang:CountDownButton:1.9'
 	}
 
 ```
 ## 5 更新日志
+
+### 2.0 取消 prepare 阶段,发送验证码成功后,直接调用start()方法
 
 ### 1.9
 
