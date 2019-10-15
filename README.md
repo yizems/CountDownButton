@@ -1,4 +1,5 @@
-# CountDownButton
+# CountDownButton [![](https://jitpack.io/v/yizems/CountDownButton.svg)](https://jitpack.io/#yizems/CountDownButton)
+
 倒计时按钮-每次做发送验证码之类的倒计时按钮都 要写半天,要么就是复制,偶尔还复制错误,这次直接封装起来,以后不用那么麻烦了
 
 ## 1 效果图
