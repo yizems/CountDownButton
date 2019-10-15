@@ -16,7 +16,6 @@
         android:layout_height="50dp"
         app:end_text="重新发送"
         app:end_text_color="#228899"
-        app:has_prepare="false"
         app:normal_bg="@drawable/bg_count_button_default"
         app:normal_text="发送"
         app:normal_text_color="#000000"

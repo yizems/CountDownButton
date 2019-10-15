@@ -87,8 +87,11 @@ allprojects {
  dependencies {
 	        compile 'com.github.yizeliang:CountDownButton:1.9'
 	}
+	
 
 ```
+依赖于`compileOnly 'androidx.appcompat:appcompat:1.0.0'`
+
 ## 5 更新日志
 
 ### 2.0 取消 prepare 阶段,发送验证码成功后,直接调用start()方法
